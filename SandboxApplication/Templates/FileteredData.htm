@@ -1,11 +1,110 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--Based on example in O'Reilly AngularJs Book
+-->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
-    
     AND WE WILL BE DOING OUTSTADING STUFF HERE
-
+    <div class="row-fluid">
+        <div class="span3" data-ng-controller="ListFilterController">
+            <form class="form-horizontal">
+                <div class="controls-row">
+                    <label for="searchtextBox" class="control-label">
+                        Search:</label>
+                    <div class="controls">
+                        <input type="text" id="searchtextBox" data-ng-model="filterService.searchText" />
+                    </div>
+                </div>
+                <div class="controls-row">
+                    <label for="applianceComboBox" class="control-label">
+                        Appliance:</label>
+                    <div class="controls">
+                        <select id="applianceComboBox" data-ng-model="filterService.activeFilters.applianceType">
+                            <option data-ng-repeat="applianceType in [null,'Washing Machine','Fridge','Kettle']">{{applianceType}}</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="controls-row">
+                    <label for="brandcomboBox" class="control-label" >Brand:</label>
+                    <div class="controls">
+                        <select id="brandcomboBox" data-ng-model="filterService.activeFilters.brand">                    
+                            <option data-ng-repeat="brand in [null,'Samsung','Hotpoint','Bosche']">{{brand}}</option>
+                        </select>
+                    </div>
+                </div>                
+                
+                <div class="controls-row">
+                    <label class="control-label">Is Top 5 Item</label>    
+                    <div class="controls">
+                        <input type="checkbox" data-ng-model="filterService.activeFilters.isTop5" data-ng-false-value="" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    <div class="row-fluid">
+        
+    </div>
+        <div class="span8" data-ng-controller="ListController">
+<!--            <ul>
+                <li>            
+                    search =         {{filterService.searchText}}
+                </li>
+                <li>            
+                    apptype =         {{filterService.activeFilters.applianceType}}
+                </li>
+                <li>            
+                    brand =         {{filterService.activeFilters.brand}}
+                </li>
+                <li>            
+                    top5 =         {{filterService.activeFilters.isTop5}}
+                </li>
+            </ul>-->
+            total rows = {{productList.length}}
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Sku
+                        </th>
+                        <th>
+                            Desc
+                        </th>
+                        <th>
+                            Appliance Type
+                        </th>
+                        <th>
+                            Brand
+                        </th>
+                        <th>
+                            Is Top 5
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="prodlistTable">
+<!--                    <tr data-ng-repeat="prod in productList | filter:filterService.searchText | filter:filterService.activeFilters">-->
+                    <tr data-ng-repeat="prod in productList | filter:filterService.activeFilters | filter:filterService.searchText">
+                        <td>
+                            {{prod.sku}}
+                        </td>    
+                        <td>
+                            {{prod.desc}}
+                        </td>
+                        <td>
+                            {{prod.applianceType}}
+                        </td>
+                        <td>
+                            {{prod.brand}}
+                        </td>
+                        <td>
+                            {{prod.isTop5}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>        
+    </div>
 </body>
 </html>
