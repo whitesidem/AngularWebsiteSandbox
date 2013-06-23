@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-ng-app="MainApp">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+
+        <script src="~/Scripts/External/jquery-1.9.1.js" type="text/javascript"></script>
+        <script src="~/Scripts/External/jquery-ui-1.10.2.js" type="text/javascript"></script>
+        <script src="~/Scripts/External/underscore.js" type="text/javascript"></script>
+        <script src="~/Scripts/External/Angular/angular.js" type="text/javascript"></script>
+        <script src="~/Scripts/External/Bootstrap/bootstrap.js" type="text/javascript"></script>
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script type="text/javascript" src="~/Scripts/External/Shims/html5shiv.js"></script>
+        <![endif]-->
+
+        <script src="~/Scripts/External/Angular-Bootstrap/ui-bootstrap-tpls-0.2.0.js" type="text/javascript"></script>
+        <script src="~/Scripts/Shared/global.js" type="text/javascript"></script>
+        <script src="~/Scripts/mainApp.js" type="text/javascript"></script>
+
+    </body>
+</html>
